@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Part 2 CDN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <dialog />
+    </div>
+    
+    <template id="dialog-template">
+        <div class="Class" v-show="active">
+            <div class="Dialog__overlay" @click="close()">&#215;</div>
+            <div class="Dialog__content">
+                <div class="Dialog__body">
+                    Вы уверены? 
+                </div>
+                <div class="Dialog__footer">
+                    <button class="btn" @click="onCancel()">Отмена</button>
+                    <button class="btn btn-ok" @click="onConfirm()">Да</button>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" class="link" @click="open()">Ссылка</a>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        Vue.component('dialog', {
+            template: '#dialog-template'
+        })
+    </script>
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+.link {
+    display: flex;
+    justify-content: center;
+    margin-top: 49vh;
+}
+
+.Class {
+    margin: 48vh 40vw 0;
+    z-index: 1;
+    padding: 10px 0 0;
+    border: 1px solid #ccc;
+    text-align: center;
+    position: relative;
+
+}
+
+.Dialog__overlay {
+    position: absolute;
+    cursor: pointer;
+    right: 3px;
+    top: 0;
+}
+
+.Dialog__footer {
+    margin-top: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #ccc;
+}
+
+.btn {
+    width: 100%;
+    outline: none;
+    border: 0;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 3px;
+}
+
+.btn:active {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.btn-ok {
+    border-left: 1px solid #ccc;
+}
+

@@ -4,12 +4,13 @@
 
     <transition name="fade"> 
       <div v-if="show">
-        {{ 'UpperCaseFilter' | uppercase}}
-        {{ 'LowerCaseFilter' | lowercase}}
-        {{ 500 | currency }}
-        {{ 500 | currency('¥') }}
-        {{ 500 | currency('¥', 0) }}
-        
+        <ul>
+          <li>{{ 'UpperCaseFilter' | uppercase}}</li>
+          <li>{{ 'LowerCaseFilter' | lowercase}}</li>
+          <li>{{ 500 | currency }}</li>
+          <li>{{ 500 | currency('¥') }}</li>
+          <li>{{ 500 | currency('¥', 0) }}</li>
+        </ul>
         <ul>
           <li v-for="user in orderBy(users, 'name')" :key="user.id">{{user.name}}, {{user.age}}</li>
         </ul>
@@ -28,15 +29,19 @@
           <li v-for="user in filterBy(users, input)" :key="user.id">{{user.name}}, {{user.age}}</li>
         </ul>
 
-        <div style="position: relative; margin-top: 10px;"> 
-          <textarea v-model="htmlfilter" style="position: absolute; left: 0; width: 50%; resize: none;" rows="20" ></textarea>
-          <div v-html="$marked(htmlfilter)" style="position: absolute; left: 51%; width: 50%; top: -15px;"></div>
-        </div>
+        <button @click="typefilter = !typefilter" class="btn">Change text filter</button>
 
-        <div style="position: relative; margin-top: 10px;"> 
-          <textarea v-model="emojifilter" style="position: absolute; left: 0; width: 50%; resize: none;" rows="20" ></textarea>
-          <div style="position: absolute; left: 51%; width: 50%;" v-html="emoji(emojifilter)"></div>
-        </div>
+        <transition name="fade">
+          <div style="position: relative; margin-top: 10px;" v-if="!typefilter"> 
+            <textarea v-model="htmlfilter" style="position: absolute; left: 0; width: 50%; resize: none;" rows="20" ></textarea>
+            <div v-html="$marked(htmlfilter)" style="position: absolute; left: 51%; width: 50%; top: -15px;"></div>
+          </div>
+
+          <div style="position: relative; margin-top: 10px" v-if="typefilter"> 
+            <textarea v-model="emojifilter" style="position: absolute; left: 0; width: 50%; resize: none;" rows="20" ></textarea>
+            <div style="position: absolute; left: 51%; width: 50%;" v-html="emoji(emojifilter)"></div>
+          </div>
+        </transition> 
       </div>
     </transition>
 
@@ -65,7 +70,8 @@ export default {
         {id: 2, name: 'Maks', age: 19},
         {id: 3, name: 'Petr', age: 29},
         {id: 4, name: 'Vova', age: 20},
-      ]
+      ],
+      typefilter: false
     }
   },
   methods: {

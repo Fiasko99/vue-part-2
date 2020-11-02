@@ -7,6 +7,7 @@
     <Square />
     <MenuBar />
     <FilterVue />
+    <MathProps />
 
   </div>
 </template>
@@ -18,6 +19,7 @@ import KeyUpEnter from "./components/KeyUpEnter";
 import Square from "./components/Square";
 import MenuBar from "./components/MenuBar";
 import FilterVue from "./components/FilterVue";
+import MathProps from "./components/MathProps";
 
 export default {
   name: 'App',
@@ -29,7 +31,8 @@ export default {
   components: {
     ShowDataChange, TodosList,
     KeyUpEnter, Square,
-    MenuBar, FilterVue
+    MenuBar, FilterVue,
+    MathProps
   }
 }
 </script>
